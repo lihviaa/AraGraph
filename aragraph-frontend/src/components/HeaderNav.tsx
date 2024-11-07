@@ -12,7 +12,7 @@ export default function HeaderNav() {
     <>
       <header className="w-full px-14 flex justify-between items-center bg-white shadow-lg rounded-lg">
         <div className="flex items-center p-1">
-          <Image src="/images/logoredmn.png" alt="Logo" width={80} height={82} />
+          <Image src="/images/logoredmn.png" alt="Logo" width={80} height={80} />
           <Link href="/" passHref>
             <h1 className="ml-3 text-4xl font-bold">ARAGRAPH</h1> 
           </Link>
