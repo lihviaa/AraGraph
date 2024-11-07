@@ -1,6 +1,6 @@
 const routes = [
   { label: "Ajuda", path: "/ajuda" },
-  { label: "Nossa equipe", path: "/equipe" },
+  { label: "Equipe", path: "/equipe" },
   { label: "Sobre", path: "/sobre" },
 ];
 

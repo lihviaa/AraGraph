@@ -1,42 +1,38 @@
-import routes from "@/lib/routes";
-import Link from "next/link";
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import routes from "@/lib/routes"
 
 export default function HeaderNav() {
+  const pathname = usePathname()
+
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <Link href={"/"} className="text-2xl font-semibold text-gray-800">
-            AraGraph
+    <>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" />
+      <header className="w-full p-1 flex justify-between items-center bg-white shadow-lg rounded-lg">
+        <div className="flex items-center p-1">
+          <Image src="/images/logo.png" alt="Logo" width={120} height={120} />
+          <Link href="/" passHref>
+            <h1 className="ml-3 text-4xl font-bold" style={{ fontFamily: 'Julius Sans One, sans-serif' }}>ARAGRAPH</h1> 
           </Link>
-          <div className="hidden md:flex space-x-8">
-						{routes.map((item) => (
-							<Link href={item.path} key={item.label}
-							className="text-gray-600 hover:text-gray-900">
-								{item.label}
-							</Link>
-						))}
-          </div>
-          <div className="md:hidden">
-            <button className="text-gray-600 hover:text-gray-900 focus:outline-none">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                ></path>
-              </svg>
-            </button>
-          </div>
         </div>
-      </div>
-    </nav>
-  );
+        <nav className="flex space-x-4">
+          {routes.map((item) => (
+            <Link 
+              href={item.path} 
+              key={item.label} 
+              className={`px-4 py-2 rounded-lg ${
+                pathname === item.path ? 'bg-[#1F6789] text-white' : 'bg-transparent text-gray-600 hover:text-gray-900'
+              }`} 
+              aria-current={pathname === item.path ? 'page' : undefined}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </header>
+    </>
+  )
 }
