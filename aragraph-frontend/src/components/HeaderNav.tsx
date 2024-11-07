@@ -10,14 +10,14 @@ export default function HeaderNav() {
 
   return (
     <>
-      <header className="w-full p-1 flex justify-between items-center bg-white shadow-lg rounded-lg">
+      <header className="w-full px-14 flex justify-between items-center bg-white shadow-lg rounded-lg">
         <div className="flex items-center p-1">
-          <Image src="/images/logo.png" alt="Logo" width={120} height={120} />
+          <Image src="/images/logoredmn.png" alt="Logo" width={80} height={82} />
           <Link href="/" passHref>
             <h1 className="ml-3 text-4xl font-bold">ARAGRAPH</h1> 
           </Link>
         </div>
-        <nav className="flex space-x-4">
+        <nav className="flex mr-8">
           {routes.map((item) => (
             <Link 
               href={item.path} 
