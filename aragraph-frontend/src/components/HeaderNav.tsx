@@ -10,12 +10,11 @@ export default function HeaderNav() {
 
   return (
     <>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" />
       <header className="w-full p-1 flex justify-between items-center bg-white shadow-lg rounded-lg">
         <div className="flex items-center p-1">
           <Image src="/images/logo.png" alt="Logo" width={120} height={120} />
           <Link href="/" passHref>
-            <h1 className="ml-3 text-4xl font-bold" style={{ fontFamily: 'Julius Sans One, sans-serif' }}>ARAGRAPH</h1> 
+            <h1 className="ml-3 text-4xl font-bold">ARAGRAPH</h1> 
           </Link>
         </div>
         <nav className="flex space-x-4">
