@@ -27,7 +27,7 @@ const birdslist = [
 		imagem: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQOZGFMJLB7De8DjAxui3Wu6QKAX9GauzE9oSlTmUamvKLCl_PE"
 	},
 	{
-		_id: "4",
+		id: "4",
         taxon: "Nyctibius leucopterus",
         nomecomum: "Urutau-de-asa-branca",
 		imagem: "https://mirantedogaviao.com.br/br/wp-content/uploads/2022/10/urutau-de-asa-branca.jpg"
