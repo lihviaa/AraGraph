@@ -1,5 +1,3 @@
-import { ImageMinus } from "lucide-react";
-
 const birdslist = [
 	{
 		id: "0",
