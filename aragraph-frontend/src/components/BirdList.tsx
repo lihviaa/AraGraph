@@ -1,22 +1,11 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Bird, Volume2, VolumeX, Search } from "lucide-react";
+import { Bird, Volume2, VolumeX, Search, ArrowDownAZ, ArrowDownWideNarrow } from "lucide-react";
 import birdslist from "@/lib/birdslist";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue, } from "@/components/ui/select"
 import { Card } from "./ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
@@ -72,7 +61,7 @@ export default function BirdList() {
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto">
-      <div className="sticky rounded top-0 bg-white z-10 py-4 shadow-md w-full flex px-4">
+      <div className="sticky rounded top-0 gap-32 bg-white z-10 py-4 shadow-md w-full flex px-8 justify-center">
         <div className="flex items-center gap-2 w-[300px]">
           <Search className="w-5 h-5 text-gray-500" />
           <input
@@ -83,10 +72,26 @@ export default function BirdList() {
             className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 w-full"
           />
         </div>
-
-        {/* COLOCAR ORDENAÇÃO */}
-
-
+        <div className='px-8 flex items-center gap-2'>
+          <ArrowDownWideNarrow />
+          <Select>
+            <SelectTrigger className="w-[200px]">
+              <SelectValue placeholder="Ordenar por" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="ordem alfabetica">Ordem Alfabética</SelectItem>
+                <SelectItem value="taxon">Táxon</SelectItem>
+                <SelectItem value="ordem">Ordem</SelectItem>
+                <SelectItem value="familia">Família</SelectItem>
+                <SelectItem value="genero">Gênero</SelectItem>
+                <SelectLabel>Preservação</SelectLabel>
+                <SelectItem value="menos vulneravel">Menos Vulnerável</SelectItem>
+                <SelectItem value="mais vulneravel">Mais Vulnerável</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
       <div className="grid grid-cols-5 gap-4 mt-6">
         {filteredBirds.map((bird) => (
@@ -172,36 +177,38 @@ export default function BirdList() {
                   </a>
                 </div>
               </div>
-              {selectedBird.linkAudio && (
-                <>
-                  <audio ref={audioRef} src={selectedBird.linkAudio} />
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <button
-                          onClick={toggleAudio}
-                          className="mt-2 mb-2 px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 transition-colors flex items-center gap-2 text-sm mx-auto"
-                        >
-                          {isPlaying ? (
-                            <>
-                              <VolumeX className="w-4 h-4" />
-                              Pausar Som
-                            </>
-                          ) : (
-                            <>
-                              <Volume2 className="w-4 h-4" />
-                              Tocar Som
-                            </>
-                          )}
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Escute o Canto da Ave</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </>
-              )}
+              <div className='pt-4'>
+                {selectedBird.linkAudio && (
+                  <>
+                    <audio ref={audioRef} src={selectedBird.linkAudio} />
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            onClick={toggleAudio}
+                            className="mt-2 mb-2 px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 transition-colors flex items-center gap-2 text-sm mx-auto"
+                          >
+                            {isPlaying ? (
+                              <>
+                                <VolumeX className="w-4 h-4" />
+                                Pausar Som
+                              </>
+                            ) : (
+                              <>
+                                <Volume2 className="w-4 h-4" />
+                                Tocar Som
+                              </>
+                            )}
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Escute o Canto da Ave</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </>
+                )}
+              </div>
             </div>
           </DialogContent>
         )}
