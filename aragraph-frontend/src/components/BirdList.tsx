@@ -161,14 +161,16 @@ export default function BirdList() {
                   <p className="font-semibold text-sm">Status de Extinção:</p>
                   <p className="text-gray-600 text-sm">{selectedBird.statusExtincao}</p>
                 </div>
-                <a
-                  href={selectedBird.linkWiki}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-teal-500 underline text-sm"
-                >
-                  Saiba Mais
-                </a>
+                <div>
+                  <a
+                    href={selectedBird.linkWiki}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-teal-500 underline text-sm"
+                  >
+                    Saiba Mais
+                  </a>
+                </div>
               </div>
               {selectedBird.linkAudio && (
                 <>
