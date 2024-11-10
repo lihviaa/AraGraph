@@ -54,12 +54,16 @@ export default function BirdList() {
 
   const filteredBirds = birdslist.filter((bird) =>
     bird.nomecomum.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    bird.taxon.toLowerCase().includes(searchTerm.toLowerCase())
+    bird.taxon.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    bird.ordem.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    bird.familia.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    bird.genero.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    bird.especie.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto">
-      <div className="sticky top-0 bg-white z-10 py-4 shadow-md w-full flex justify-center">
+      <div className="sticky rounded top-0 bg-white z-10 py-4 shadow-md w-full flex justify-center">
         <div className="flex items-center gap-2 w-[300px]">
           <Search className="w-5 h-5 text-gray-500" />
           <input
