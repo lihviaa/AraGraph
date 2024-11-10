@@ -107,7 +107,7 @@ const birdslist = [
 	{
 		id: 8,
 		taxon: "Chaetura meridionalis",
-		nomecomum: "andorinhão-do-temporal",
+		nomecomum: "Andorinhão-do-temporal",
 		ordem: "Apodiformes",
 		familia: "Apodidae",
 		genero: "Chaetura ",

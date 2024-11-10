@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Bird, Volume2, VolumeX, Search, ArrowDownAZ, ArrowDownWideNarrow } from "lucide-react";
+import { Bird, Volume2, VolumeX, Search, ArrowDownWideNarrow } from "lucide-react";
 import birdslist from "@/lib/birdslist";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
