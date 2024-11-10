@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { Bird, Volume2, VolumeX, Search, ArrowDownWideNarrow } from "lucide-react";
 import birdslist from "@/lib/birdslist";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue, } from "@/components/ui/select"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card } from "./ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
@@ -27,6 +27,7 @@ export default function BirdList() {
   const [selectedBird, setSelectedBird] = useState<BirdType | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortCriteria, setSortCriteria] = useState<string | null>(null); // Estado para o critério de ordenação
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
   const toggleAudio = () => {
@@ -49,15 +50,45 @@ export default function BirdList() {
     setSelectedBird(null);
   };
 
-  const filteredBirds = birdslist.filter((bird) =>
-    bird.nomecomum.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    bird.taxon.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    bird.ordem.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    bird.familia.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    bird.genero.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    bird.especie.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    bird.statusExtincao.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleSortChange = (value: string) => {
+    setSortCriteria(value);
+  };
+
+  const sortBirds = (birds: BirdType[]) => {
+    return [...birds].sort((a, b) => {
+      switch (sortCriteria) {
+        case 'ordem alfabetica':
+          return a.nomecomum.localeCompare(b.nomecomum);
+        case 'taxon':
+          return a.taxon.localeCompare(b.taxon);
+        case 'ordem':
+          return a.ordem.localeCompare(b.ordem);
+        case 'familia':
+          return a.familia.localeCompare(b.familia);
+        case 'genero':
+          return a.genero.localeCompare(b.genero);
+        case 'menos vulneravel':
+          return a.statusExtincao.localeCompare(b.statusExtincao);
+        case 'mais vulneravel':
+          return b.statusExtincao.localeCompare(a.statusExtincao);
+        default:
+          return 0;
+      }
+    });
+  };
+
+  const filteredBirds = birdslist
+    .filter((bird) =>
+      bird.nomecomum.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.taxon.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.ordem.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.familia.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.genero.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.especie.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.statusExtincao.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+  const sortedBirds = sortBirds(filteredBirds);
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto">
@@ -72,9 +103,9 @@ export default function BirdList() {
             className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 w-full"
           />
         </div>
-        <div className='px-8 flex items-center gap-2'>
+        <div className="px-8 flex items-center gap-2">
           <ArrowDownWideNarrow />
-          <Select>
+          <Select onValueChange={handleSortChange}>
             <SelectTrigger className="w-[200px]">
               <SelectValue placeholder="Ordenar por" />
             </SelectTrigger>
@@ -94,7 +125,7 @@ export default function BirdList() {
         </div>
       </div>
       <div className="grid grid-cols-5 gap-4 mt-6">
-        {filteredBirds.map((bird) => (
+        {sortedBirds.map((bird) => (
           <TooltipProvider key={bird.id}>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -177,7 +208,7 @@ export default function BirdList() {
                   </a>
                 </div>
               </div>
-              <div className='pt-4'>
+              <div className="pt-4">
                 {selectedBird.linkAudio && (
                   <>
                     <audio ref={audioRef} src={selectedBird.linkAudio} />
