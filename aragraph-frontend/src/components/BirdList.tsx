@@ -9,6 +9,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
 import { Card } from "./ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
@@ -54,7 +62,7 @@ export default function BirdList() {
 
   const filteredBirds = birdslist.filter((bird) =>
     bird.nomecomum.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    bird.taxon.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    bird.taxon.toLowerCase().includes(searchTerm.toLowerCase()) ||
     bird.ordem.toLowerCase().includes(searchTerm.toLowerCase()) ||
     bird.familia.toLowerCase().includes(searchTerm.toLowerCase()) ||
     bird.genero.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -64,7 +72,7 @@ export default function BirdList() {
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto">
-      <div className="sticky rounded top-0 bg-white z-10 py-4 shadow-md w-full flex justify-center">
+      <div className="sticky rounded top-0 bg-white z-10 py-4 shadow-md w-full flex px-4">
         <div className="flex items-center gap-2 w-[300px]">
           <Search className="w-5 h-5 text-gray-500" />
           <input
@@ -75,32 +83,43 @@ export default function BirdList() {
             className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 w-full"
           />
         </div>
-      </div>
 
+        {/* COLOCAR ORDENAÇÃO */}
+
+
+      </div>
       <div className="grid grid-cols-5 gap-4 mt-6">
         {filteredBirds.map((bird) => (
-          <Card
-            key={bird.id}
-            onClick={() => setSelectedBird(bird)}
-            className="cursor-pointer hover:bg-gray-50 transition-colors h-48 flex flex-col justify-center items-center"
-          >
-            <div className="flex flex-col items-center p-2 gap-2">
-              <Avatar className="h-20 w-20">
-                <AvatarImage
-                  src={bird.imagem}
-                  alt={`${bird.id}`}
-                  className="object-cover"
-                />
-                <AvatarFallback>
-                  <Bird />
-                </AvatarFallback>
-              </Avatar>
-              <div className="text-center">
-                <div className="text-md font-semibold">{bird.nomecomum}</div>
-                <div className="text-xs text-gray-600">{bird.taxon}</div>
-              </div>
-            </div>
-          </Card>
+          <TooltipProvider key={bird.id}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Card
+                  onClick={() => setSelectedBird(bird)}
+                  className="cursor-pointer hover:bg-gray-100 transition-colors h-48 flex flex-col justify-center items-center"
+                >
+                  <div className="flex flex-col items-center p-2 gap-2">
+                    <Avatar className="h-20 w-20">
+                      <AvatarImage
+                        src={bird.imagem}
+                        alt={`${bird.id}`}
+                        className="object-cover"
+                      />
+                      <AvatarFallback>
+                        <Bird />
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="text-center">
+                      <div className="text-md font-semibold">{bird.nomecomum}</div>
+                      <div className="text-xs text-gray-600">{bird.taxon}</div>
+                    </div>
+                  </div>
+                </Card>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Ver Informações</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         ))}
       </div>
 
@@ -154,22 +173,31 @@ export default function BirdList() {
               {selectedBird.linkAudio && (
                 <>
                   <audio ref={audioRef} src={selectedBird.linkAudio} />
-                  <button
-                    onClick={toggleAudio}
-                    className="mt-2 mb-2 px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 transition-colors flex items-center gap-2 text-sm mx-auto"
-                  >
-                    {isPlaying ? (
-                      <>
-                        <VolumeX className="w-4 h-4" />
-                        Pausar Som
-                      </>
-                    ) : (
-                      <>
-                        <Volume2 className="w-4 h-4" />
-                        Tocar Som
-                      </>
-                    )}
-                  </button>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          onClick={toggleAudio}
+                          className="mt-2 mb-2 px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 transition-colors flex items-center gap-2 text-sm mx-auto"
+                        >
+                          {isPlaying ? (
+                            <>
+                              <VolumeX className="w-4 h-4" />
+                              Pausar Som
+                            </>
+                          ) : (
+                            <>
+                              <Volume2 className="w-4 h-4" />
+                              Tocar Som
+                            </>
+                          )}
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Escute o Canto da Ave</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </>
               )}
             </div>
