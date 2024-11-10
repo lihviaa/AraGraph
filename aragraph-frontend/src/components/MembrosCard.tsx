@@ -15,9 +15,10 @@ export default function MembrosCard() {
           </Avatar>
           <h3 className="mt-4 text-lg font-semibold">{member.name}</h3>
           <p className="text-gray-600 mt-2 text-sm">{member.role}</p>
-          <a 
+          <a
+            target="blank" 
             href={member.linkedin} 
-            className="mt-4 inline-block px-6 py-2 text-sm font-medium text-white bg-teal-300 rounded-full hover:bg-teal-400 transition duration-300"
+            className="mt-4 inline-block px-6 py-2 text-sm font-medium text-white bg-teal-500 rounded-full hover:bg-teal-700 transition duration-300"
           >
             CONHECER
           </a>
