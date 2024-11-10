@@ -58,7 +58,8 @@ export default function BirdList() {
     bird.ordem.toLowerCase().includes(searchTerm.toLowerCase()) ||
     bird.familia.toLowerCase().includes(searchTerm.toLowerCase()) ||
     bird.genero.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    bird.especie.toLowerCase().includes(searchTerm.toLowerCase())
+    bird.especie.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    bird.statusExtincao.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
