@@ -57,7 +57,7 @@ export default function BirdList() {
   const sortBirds = (birds: BirdType[]) => {
     return [...birds].sort((a, b) => {
       switch (sortCriteria) {
-        case 'ordem alfabetica':
+        case 'nome comum':
           return a.nomecomum.localeCompare(b.nomecomum);
         case 'taxon':
           return a.taxon.localeCompare(b.taxon);
@@ -111,7 +111,8 @@ export default function BirdList() {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="ordem alfabetica">Ordem Alfabética</SelectItem>
+                <SelectLabel>Ordem Alfabética</SelectLabel>
+                <SelectItem value="nome comum">Nome Comum</SelectItem>
                 <SelectItem value="taxon">Táxon</SelectItem>
                 <SelectItem value="ordem">Ordem</SelectItem>
                 <SelectItem value="familia">Família</SelectItem>
