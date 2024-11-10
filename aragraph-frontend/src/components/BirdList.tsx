@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Bird, Volume2, VolumeX, Search } from "lucide-react";  
+import { Bird, Volume2, VolumeX, Search } from "lucide-react";
 import birdslist from "@/lib/birdslist";
 import {
   Dialog,
@@ -59,7 +59,7 @@ export default function BirdList() {
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto">
-      <div className="sticky top-0 bg-white z-10 py-4 shadow-md w-full flex justify-center"> 
+      <div className="sticky top-0 bg-white z-10 py-4 shadow-md w-full flex justify-center">
         <div className="flex items-center gap-2 w-[300px]">
           <Search className="w-5 h-5 text-gray-500" />
           <input
@@ -74,17 +74,17 @@ export default function BirdList() {
 
       <div className="grid grid-cols-5 gap-4 mt-6">
         {filteredBirds.map((bird) => (
-          <Card 
+          <Card
             key={bird.id}
             onClick={() => setSelectedBird(bird)}
             className="cursor-pointer hover:bg-gray-50 transition-colors h-48 flex flex-col justify-center items-center"
           >
             <div className="flex flex-col items-center p-2 gap-2">
               <Avatar className="h-20 w-20">
-                <AvatarImage 
-                  src={bird.imagem} 
+                <AvatarImage
+                  src={bird.imagem}
                   alt={`${bird.id}`}
-                  className="object-cover" 
+                  className="object-cover"
                 />
                 <AvatarFallback>
                   <Bird />
@@ -101,22 +101,22 @@ export default function BirdList() {
 
       <Dialog open={selectedBird !== null} onOpenChange={handleCloseDialog}>
         {selectedBird && (
-          <DialogContent className="max-w-xl p-4"> {/* Reduzi o tamanho máximo do modal e o padding */}
+          <DialogContent className="max-w-xl p-4">
             <DialogHeader>
-              <DialogTitle className="text-xl font-semibold"> {/* Título menor */}
+              <DialogTitle className="text-xl font-semibold">
                 {selectedBird.nomecomum}
               </DialogTitle>
             </DialogHeader>
-            <div className="flex flex-col gap-2"> {/* Reduzi o espaçamento */}
-              <div className="w-full h-48 md:h-64 relative rounded-lg overflow-hidden"> {/* Altura reduzida da imagem */}
+            <div className="flex flex-col gap-2">
+              <div className="w-full h-48 md:h-64 relative rounded-lg overflow-hidden">
                 <img
                   src={selectedBird.imagem}
                   alt={selectedBird.nomecomum}
                   className="w-full h-full object-contain bg-gray-100"
                 />
               </div>
-              <p className="text-gray-600 italic text-sm">{selectedBird.taxon}</p> {/* Texto menor */}
-              <div className="grid grid-cols-2 gap-2"> {/* Menor espaçamento na grade */}
+              <p className="text-gray-600 italic text-sm">{selectedBird.taxon}</p>
+              <div className="grid grid-cols-2 gap-2">
                 <div>
                   <p className="font-semibold text-sm">Ordem:</p>
                   <p className="text-gray-600 text-sm">{selectedBird.ordem}</p>
@@ -133,17 +133,25 @@ export default function BirdList() {
                   <p className="font-semibold text-sm">Espécie:</p>
                   <p className="text-gray-600 text-sm">{selectedBird.especie}</p>
                 </div>
-                <div className="col-span-2">
+                <div>
                   <p className="font-semibold text-sm">Status de Extinção:</p>
                   <p className="text-gray-600 text-sm">{selectedBird.statusExtincao}</p>
                 </div>
+                <a
+                  href={selectedBird.linkWiki}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-teal-500 underline text-sm"
+                >
+                  Saiba Mais
+                </a>
               </div>
               {selectedBird.linkAudio && (
                 <>
                   <audio ref={audioRef} src={selectedBird.linkAudio} />
                   <button
                     onClick={toggleAudio}
-                    className="mt-2 mb-2 px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 transition-colors flex items-center gap-2 text-sm mx-auto" // Tamanho do botão e texto reduzido
+                    className="mt-2 mb-2 px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 transition-colors flex items-center gap-2 text-sm mx-auto"
                   >
                     {isPlaying ? (
                       <>
