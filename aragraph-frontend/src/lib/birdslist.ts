@@ -268,7 +268,7 @@ const birdslist = [
 		familia: "Bucconidae",
 		genero: "Cyphos",
 		especie: "macrodactylus",
-		linkAudio: "https://www.wikiaves.com.br/wiki/",
+		linkAudio: "https://s3.amazonaws.com/media.wikiaves.com.br/recordings/8451/1548929_0f3020d5113339cdd9e13d7e30b1e0d3.mp3",
 		imagem: "https://pbs.twimg.com/media/GUQ0Cd-XEAArIku.jpg",
 		linkWiki: "https://www.wikiaves.com.br/wiki/rapazinho-de-boné-vermelho",
 		statusExtincao: "Pouco Preocupante"
@@ -476,7 +476,7 @@ const birdslist = [
 		familia: "Cuculidae",
 		genero: "Micrococcyx",
 		especie: "cinereus",
-		linkAudio: "https://www.wikiaves.com.br/wiki/",
+		linkAudio: "https://s3.amazonaws.com/media.wikiaves.com.br/recordings/44/44021_c313bcbfa530a145e320aae2d8a8c885.mp3",
 		imagem: "https://s3.amazonaws.com/media.wikiaves.com.br/images/5924/4295702g_8466080ce4ddd5345f58288ee0024809.jpg",
 		linkWiki: "https://www.wikiaves.com.br/wiki/papa-lagarta-cinzento",
 		statusExtincao: "Pouco Preocupante"
