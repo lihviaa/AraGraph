@@ -16,14 +16,14 @@ export default function Ajuda() {
 						Na página principal, você tem acesso a uma lista de aves, exibindo o nome comum, nome científico e foto de cada uma.
 					</p>
 					<div className="flex justify-center py-8">
-						<Image src="/images/ajuda/foto1.png" alt="lista aves" width={300} height={300} />
+						<Image src="/images/ajuda/foto1.png" alt="lista aves" width={301} height={300} />
 
 					</div>
 					<p>
 						Selecione uma ave para acessar mais informações sobre ela, como ordem e família.
 					</p>
 					<div className="flex justify-center py-8">
-						<Image src="/images/ajuda/foto2.png" alt="card detalhado" width={300} height={300} />
+						<Image src="/images/ajuda/foto2.png" alt="card detalhado" width={400} height={400} />
 					</div>
 					<p>
 						Para conhecer ainda mais sobre a ave, você pode clicar em <span className="font-bold text-teal-600">Saiba Mais</span>, onde será redirecionado para uma página com ainda mais detalhes sobre a ave.
@@ -103,14 +103,14 @@ export default function Ajuda() {
 					</p>
 
 					<p>
-						Menos Vulnerável: A lista inicia pelas aves menos vulneráveis, e ao final da lista estão as aves mais vulneráveis.
+						<span className="font-bold">Menos Vulnerável</span>: A lista inicia pelas aves menos vulneráveis, e ao final da lista estão as aves mais vulneráveis.
 					</p>
 					<div className="flex justify-center py-8">
 						<Image src="/images/ajuda/foto9.png" alt="ordenação estado de preservação menos" width={700} height={700} />
 					</div>
 
 					<p>
-						Mais Vulnerável: A lista inicia pelas aves mais vulneráveis, e ao final da lista estão as aves menos vulneráveis.
+						<span className="font-bold">Mais Vulnerável</span>: A lista inicia pelas aves mais vulneráveis, e ao final da lista estão as aves menos vulneráveis.
 					</p>
 
 					<div className="flex justify-center py-8">

@@ -20,7 +20,7 @@ export default function HeaderNav() {
                   <Image src="/images/logoredmn.png" alt="Logo" width={80} height={80} />
                 </Link>
                 <Link href="/" passHref>
-                  <h1 className="ml-3 text-4xl font-bold">ARAGRAPH</h1>
+                  <h1 className="ml-3 text-4xl font-bold">AraGraph</h1>
                 </Link>
               </div>
             </TooltipTrigger>
