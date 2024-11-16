@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Bird, Volume2, VolumeX, Search, ArrowDownWideNarrow } from "lucide-react";
-import birdslist from "@/lib/birdslist";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
