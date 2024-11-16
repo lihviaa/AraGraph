@@ -26,7 +26,7 @@ export default function Ajuda() {
 						<Image src="/images/ajuda/foto2.png" alt="card detalhado" width={300} height={300} />
 					</div>
 					<p>
-						Para conhecer ainda mais sobre a ave, você pode clicar em "Saiba Mais", onde será redirecionado para uma página com ainda mais detalhes sobre a ave.
+						Para conhecer ainda mais sobre a ave, você pode clicar em \"Saiba Mais\", onde será redirecionado para uma página com ainda mais detalhes sobre a ave.
 					</p>
 				</section>
 
@@ -36,7 +36,7 @@ export default function Ajuda() {
 						Sons de Aves
 					</h2>
 					<p>
-						Você também pode ouvir o canto da ave ao clicar em "Tocar Som".
+						Você também pode ouvir o canto da ave ao clicar em \"Tocar Som\".
 					</p>
 					<div className="flex justify-center py-8">
 						<Image src="/images/ajuda/foto3.png" alt="escutar som" width={300} height={300} />
@@ -55,7 +55,7 @@ export default function Ajuda() {
 						<Image src="/images/ajuda/foto4.png" alt="barra de busca rapazinho" width={500} height={500} />
 					</div>
 					<p>
-						No exemplo acima, procuramos pelo termo "Rapazinho", o qual foi encontrado no nome comum de duas aves.
+						No exemplo acima, procuramos pelo termo \"Rapazinho\", o qual foi encontrado no nome comum de duas aves.
 					</p>
 					<div className="flex justify-center py-8">
 						<Image src="/images/ajuda/foto5.png" alt="barra de busca apodidae" width={500} height={500} />
@@ -125,14 +125,14 @@ export default function Ajuda() {
 					</h2>
 
 					<p>
-						Em "Equipe", você encontra os idealizadores e desenvolvedores da ferramenta.
+						Em \"Equipe\", você encontra os idealizadores e desenvolvedores da ferramenta.
 					</p>
 					<div className="flex justify-center py-8">
 						<Image src="/images/ajuda/foto11.png" alt="equipe" width={300} height={300} />
 					</div>
 
 					<p>
-						Para cada um dos AraGraphers, você pode clicar em "Conhecer" e ser redirecionado ao seu perfil no GitHub.
+						Para cada um dos AraGraphers, você pode clicar em \"Conhecer\" e ser redirecionado ao seu perfil no GitHub.
 					</p>
 					<div className="flex justify-center py-8">
 						<Image src="/images/ajuda/foto12.png" alt="AraGraphers" width={300} height={300} />
@@ -145,7 +145,7 @@ export default function Ajuda() {
 					</div>
 
 					<p>
-						A qualquer momento, você pode clicar no nome "Aragraph" ou na logo para ser redirecionado à página inicial com o catálogo de aves.					</p>
+						A qualquer momento, você pode clicar no nome \"AraGraph\" ou na logo para ser redirecionado à página inicial com o catálogo de aves.					</p>
 					<div className="flex justify-center py-8">
 						<Image src="/images/ajuda/foto14.png" alt="logo" width={300} height={300} />
 					</div>
