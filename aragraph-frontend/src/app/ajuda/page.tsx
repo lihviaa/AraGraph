@@ -139,7 +139,7 @@ export default function Ajuda() {
 					</div>
 
 					<p>
-						Em "Sobre", você poderá ler sobre o propósito da aplicação e a origem do seu nome.					</p>
+						Em Sobre, você poderá ler sobre o propósito da aplicação e a origem do seu nome.					</p>
 					<div className="flex justify-center py-8">
 						<Image src="/images/ajuda/foto13.png" alt="sobre" width={300} height={300} />
 					</div>
