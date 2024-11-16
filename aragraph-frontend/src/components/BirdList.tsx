@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { Card } from "./ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
+
 interface BirdType {
   id: number;
   taxon: string;
@@ -27,7 +28,7 @@ export default function BirdList() {
   const [selectedBird, setSelectedBird] = useState<BirdType | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortCriteria, setSortCriteria] = useState<string | null>(null); // Estado para o critério de ordenação
+  const [sortCriteria, setSortCriteria] = useState<string | null>(null); 
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
   const toggleAudio = () => {
