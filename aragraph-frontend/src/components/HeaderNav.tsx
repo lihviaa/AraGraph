@@ -16,7 +16,9 @@ export default function HeaderNav() {
           <Tooltip>
             <TooltipTrigger asChild>
               <div className="flex items-center p-1">
-                <Image src="/images/logoredmn.png" alt="Logo" width={80} height={80} />
+                <Link href="/" passHref>
+                  <Image src="/images/logoredmn.png" alt="Logo" width={80} height={80} />
+                </Link>
                 <Link href="/" passHref>
                   <h1 className="ml-3 text-4xl font-bold">ARAGRAPH</h1>
                 </Link>
