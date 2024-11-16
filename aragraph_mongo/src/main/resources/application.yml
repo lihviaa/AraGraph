@@ -1,0 +1,5 @@
+spring:
+    data:
+      mongodb:
+        uri: mongodb+srv://Aragraph:aragraph2024@clusteraragraph.wnekp.mongodb.net/?retryWrites=true&w=majority&appName=ClusterAragraph
+        database: Aragraph
