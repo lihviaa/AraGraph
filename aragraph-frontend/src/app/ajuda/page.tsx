@@ -166,7 +166,7 @@ export default function Ajuda() {
 					</p>
 					<ul className="list-disc list-inside text-gray-700 mb-4">
 						<li>
-							<span className="font-bold text-green-600">LC (Least Concern):</span> Menor Preocupação
+							<span className="font-bold text-green-600">LC (Least Concern):</span> Pouco Preocupante
 						</li>
 						<li>
 							<span className="font-bold text-yellow-500">NT (Near Threatened):</span> Quase Ameaçada
