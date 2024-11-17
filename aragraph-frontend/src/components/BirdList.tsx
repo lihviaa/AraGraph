@@ -58,7 +58,11 @@ export default function BirdList() {
   
 
   if (loading) {
-    return <p className="font-bold text-white">Carregando lista...</p>;
+    return (
+      <div className="flex items-center">
+        <p className="font-semibold text-white">Carregando lista...</p>;
+      </div>
+    )
   }
 
   if (error) {
