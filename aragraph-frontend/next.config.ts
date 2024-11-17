@@ -9,7 +9,7 @@ module.exports = {
     return [
       {
         source: '/api/birds',
-        destination: 'http://34.200.244.166:8080/aves/nome/todas',
+        destination: 'http://3.92.8.209:8080/aves/nome/todas',
       },
     ];
   },
