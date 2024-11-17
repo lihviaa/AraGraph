@@ -59,10 +59,10 @@ export default function BirdList() {
 
   if (loading) {
     return (
-      <div className="flex items-center">
-        <p className="font-semibold text-white">Carregando lista...</p>;
+      <div className="flex items-center justify-center h-screen">
+        <p className="font-semibold text-white">Carregando lista...</p>
       </div>
-    )
+    );
   }
 
   if (error) {
