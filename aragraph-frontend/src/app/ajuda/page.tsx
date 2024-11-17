@@ -151,6 +151,44 @@ export default function Ajuda() {
 					</div>
 
 				</section>
+				<section className="bg-white rounded-lg shadow p-6">
+					<h2 className="text-2xl font-bold text-teal-600 mb-4 flex items-center gap-2">
+						<List />
+						Red List da IUCN
+					</h2>
+					<p className="py-4">
+						A ferramenta também exibe o estado de conservação de cada ave com base na classificação da
+						<span className="font-bold text-teal-600"> Red List da IUCN</span> (International Union for Conservation of Nature).
+					</p>
+		
+					<p className="py-2">
+						Cada ave possui seu estado de conservação. Os estados são classificados como:
+					</p>
+					<ul className="list-disc list-inside text-gray-700 mb-4">
+						<li>
+							<span className="font-bold text-green-600">LC (Least Concern):</span> Menor Preocupação
+						</li>
+						<li>
+							<span className="font-bold text-yellow-500">NT (Near Threatened):</span> Quase Ameaçada
+						</li>
+						<li>
+							<span className="font-bold text-orange-500">VU (Vulnerable):</span> Vulnerável
+						</li>
+						<li>
+							<span className="font-bold text-red-500">EN (Endangered):</span> Em Perigo
+						</li>
+						<li>
+							<span className="font-bold text-purple-500">CR (Critically Endangered):</span> Criticamente Ameaçada
+						</li>
+						<li>
+							<span className="font-bold text-gray-600">EX (Extinct):</span> Extinta
+						</li>
+					</ul>
+					<p>
+						Essa classificação é útil para identificar espécies em risco e promover a conscientização sobre sua preservação.
+					</p>
+				</section>
+
 
 			</main>
 		</div>
