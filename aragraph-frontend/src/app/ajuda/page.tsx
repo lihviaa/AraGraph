@@ -5,7 +5,7 @@ export default function Ajuda() {
 	return (
 		<div className="min-h-screen bg-gray-100">
 			<main className="max-w-5xl mx-auto px-6 py-12 flex flex-col gap-12">
-				<h2 className="text-4xl text-teal-500 font-extrabold text-center mb-10">CONHECENDO A FERRAMENTA</h2>
+				<h2 className="text-4xl text-teal-500 font-extrabold text-center mb-10">AJUDA COM A FERRAMENTA</h2>
 
 				<section className="bg-white rounded-lg shadow p-6">
 					<h2 className="text-2xl font-bold text-teal-600 mb-4 flex items-center gap-2">
