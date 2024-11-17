@@ -38,7 +38,7 @@ export default function BirdList() {
       try {
         const response = await fetch("/api/birds");
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Erro na resposta do servidor.");
         }
         const data = await response.json();
         setBirds(data);
@@ -46,7 +46,7 @@ export default function BirdList() {
         if (err instanceof Error) {
           setError(err.message);
         } else {
-          setError("An unknown error occured");
+          setError("Um erro no servidor ocorreu. Por favor, volte mais tarde.");
         }
       } finally {
         setLoading(false);
@@ -58,11 +58,11 @@ export default function BirdList() {
   
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="font-bold text-white">Carregando lista...</p>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p>Um erro no servidor ocorreu. Por favor, volte mais tarde.</p>;
   }
 
   const toggleAudio = () => {
