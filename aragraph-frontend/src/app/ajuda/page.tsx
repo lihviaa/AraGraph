@@ -154,7 +154,7 @@ export default function Ajuda() {
 				<section className="bg-white rounded-lg shadow p-6">
 					<h2 className="text-2xl font-bold text-teal-600 mb-4 flex items-center gap-2">
 						<List />
-						Red List da IUCN
+						Lista Vermelha da IUCN
 					</h2>
 					<p className="py-4">
 						A ferramenta também exibe o estado de conservação de cada ave com base na classificação da
