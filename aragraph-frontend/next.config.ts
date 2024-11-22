@@ -9,10 +9,11 @@ module.exports = {
     return [
       {
         source: '/api/birds',
-        destination: 'http://3.238.93.132:8080/aves/nome/todas',
+        destination: 'http://3.218.250.167:8080/aves/nome/todas',
       },
     ];
   },
 };
 
 export default nextConfig;
+.
