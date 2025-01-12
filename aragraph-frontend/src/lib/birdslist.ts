@@ -373,7 +373,7 @@ const birdslist = [
 		genero: "Dromococcyx",
 		especie: "pavoninus",
 		linkAudio: "https://www.xeno-canto.org/549969/download",
-		imagem: "https://www.estanciamimosa.eco.br/blog/wp-content/uploads/2023/10/Peixe-frito-pavonino_Foto-Fernando-Maidana-2.png",
+		imagem: "https://upload.wikimedia.org/wikipedia/commons/4/45/Dromococcyx_pavoninus.jpg",
 		linkWiki: "https://www.wikiaves.com.br/wiki/peixe-frito-pavonino",
 		statusExtincao: "Pouco Preocupante"
 	},
