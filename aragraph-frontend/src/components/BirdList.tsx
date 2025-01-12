@@ -1,73 +1,34 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Bird, Volume2, VolumeX, Search, ArrowDownWideNarrow } from "lucide-react";
+import birdslist from "@/lib/birdslist";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card } from "./ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
-
 interface BirdType {
   id: number;
   taxon: string;
-  nomeComum: string;
+  nomecomum: string;
   ordem: string;
   familia: string;
   genero: string;
   especie: string;
   linkAudio: string;
-  linkImg: string;
+  imagem: string;
   linkWiki: string;
   statusExtincao: string;
 }
 
 export default function BirdList() {
-  const [birds, setBirds] = useState<BirdType[]>([]);
   const [selectedBird, setSelectedBird] = useState<BirdType | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortCriteria, setSortCriteria] = useState<string | null>(null);
+  const [sortCriteria, setSortCriteria] = useState<string | null>(null); // Estado para o critério de ordenação
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    const fetchBirds = async () => {
-      try {
-        const response = await fetch("/api/birds");
-        if (!response.ok) {
-          throw new Error("Erro na resposta do servidor.");
-        }
-        const data = await response.json();
-        setBirds(data);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("Um erro no servidor ocorreu. Por favor, volte mais tarde.");
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchBirds();
-  }, []);
-
-  
-
-  if (loading) {
-    return (
-      <div>
-        <p className="font-semibold text-white">Carregando lista...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return <p>Um erro no servidor ocorreu. Por favor, volte mais tarde.</p>;
-  }
 
   const toggleAudio = () => {
     if (audioRef.current) {
@@ -97,7 +58,7 @@ export default function BirdList() {
     return [...birds].sort((a, b) => {
       switch (sortCriteria) {
         case 'nome comum':
-          return a.nomeComum.localeCompare(b.nomeComum);
+          return a.nomecomum.localeCompare(b.nomecomum);
         case 'taxon':
           return a.taxon.localeCompare(b.taxon);
         case 'ordem':
@@ -116,17 +77,16 @@ export default function BirdList() {
     });
   };
 
-  const filteredBirds = birds
-    .filter((birds: BirdType) =>
-      birds.nomeComum.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      birds.taxon.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      birds.ordem.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      birds.familia.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      birds.genero.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      birds.especie.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      birds.statusExtincao.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredBirds = birdslist
+    .filter((bird) =>
+      bird.nomecomum.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.taxon.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.ordem.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.familia.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.genero.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.especie.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bird.statusExtincao.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
 
   const sortedBirds = sortBirds(filteredBirds);
 
@@ -166,19 +126,19 @@ export default function BirdList() {
         </div>
       </div>
       <div className="grid grid-cols-5 gap-4 mt-6">
-        {sortedBirds.map((birds: BirdType) => (
-          <TooltipProvider key={birds.id}>
+        {sortedBirds.map((bird) => (
+          <TooltipProvider key={bird.id}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Card
-                  onClick={() => setSelectedBird(birds)}
+                  onClick={() => setSelectedBird(bird)}
                   className="cursor-pointer hover:bg-gray-100 transition-colors h-48 flex flex-col justify-center items-center"
                 >
                   <div className="flex flex-col items-center p-2 gap-2">
                     <Avatar className="h-20 w-20">
                       <AvatarImage
-                        src={birds.linkImg}
-                        alt={`${birds.id}`}
+                        src={bird.imagem}
+                        alt={`${bird.id}`}
                         className="object-cover"
                       />
                       <AvatarFallback>
@@ -186,8 +146,8 @@ export default function BirdList() {
                       </AvatarFallback>
                     </Avatar>
                     <div className="text-center">
-                      <div className="text-md font-semibold">{birds.nomeComum}</div>
-                      <div className="text-xs text-gray-600">{birds.taxon}</div>
+                      <div className="text-md font-semibold">{bird.nomecomum}</div>
+                      <div className="text-xs text-gray-600">{bird.taxon}</div>
                     </div>
                   </div>
                 </Card>
@@ -205,14 +165,14 @@ export default function BirdList() {
           <DialogContent className="max-w-xl p-4">
             <DialogHeader>
               <DialogTitle className="text-xl font-semibold">
-                {selectedBird.nomeComum}
+                {selectedBird.nomecomum}
               </DialogTitle>
             </DialogHeader>
             <div className="flex flex-col gap-2">
               <div className="w-full h-48 md:h-64 relative rounded-lg overflow-hidden">
                 <img
-                  src={selectedBird.linkImg}
-                  alt={selectedBird.nomeComum}
+                  src={selectedBird.imagem}
+                  alt={selectedBird.nomecomum}
                   className="w-full h-full object-contain bg-gray-100"
                 />
               </div>
